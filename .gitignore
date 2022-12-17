@@ -1,6 +1,9 @@
-bin/
-obj/
-.idea/
 /packages/
 riderModule.iml
 /_ReSharper.Caches/
+.idea
+.vscode
+.vs
+bin
+obj
+./BeatLeaderModifiers/BeatLeaderModifiers.csproj.user
