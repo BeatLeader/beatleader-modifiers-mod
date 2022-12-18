@@ -16,10 +16,12 @@ namespace BeatLeaderModifiers {
     class StandardLevelBlaBlaPatch
     {
         public static CustomCharacterisitic customCharacterisitic;
-        static void Postfix(StandardLevelScenesTransitionSetupDataSO __instance, string gameMode, IDifficultyBeatmap difficultyBeatmap, IPreviewBeatmapLevel previewBeatmapLevel, OverrideEnvironmentSettings overrideEnvironmentSettings,
-            GameplayModifiers gameplayModifiers, ColorScheme overrideColorScheme, PlayerSpecificSettings playerSpecificSettings, ref PracticeSettings practiceSettings, string backButtonText, bool useTestNoteCutSoundEffects)
+        static void Prefix(StandardLevelScenesTransitionSetupDataSO __instance, string gameMode, IDifficultyBeatmap difficultyBeatmap, IPreviewBeatmapLevel previewBeatmapLevel, OverrideEnvironmentSettings overrideEnvironmentSettings,
+            ref GameplayModifiers gameplayModifiers, ColorScheme overrideColorScheme, PlayerSpecificSettings playerSpecificSettings, ref PracticeSettings practiceSettings, string backButtonText, bool useTestNoteCutSoundEffects)
         {
             if (difficultyBeatmap.parentDifficultyBeatmapSet.beatmapCharacteristic.serializedName == CharacteristicsManager.BetterScoringCharacteristic.SerializedName) {
+                gameplayModifiers = gameplayModifiers.CopyWith(proMode: true, strictAngles: true);
+
                 customCharacterisitic = CustomCharacterisitic.betterScoring;
             } else {
                 customCharacterisitic = CustomCharacterisitic.standard;
