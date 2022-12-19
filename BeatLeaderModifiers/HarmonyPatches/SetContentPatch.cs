@@ -32,6 +32,8 @@ namespace BeatLeaderModifiers {
             var difficultyBeatmapSets = new List<IDifficultyBeatmapSet>(level.beatmapLevelData.difficultyBeatmapSets);
 
             foreach (var originalBeatmapSet in level.beatmapLevelData.difficultyBeatmapSets) {
+                if (originalBeatmapSet.beatmapCharacteristic.serializedName != "Standard") continue;
+
                 var beatmapSet = new CustomDifficultyBeatmapSet(characteristicSO);
                 var customDifficulties = await CreateCustomDifficulties(originalBeatmapSet.difficultyBeatmaps, beatmapSet);
                 beatmapSet.SetCustomDifficultyBeatmaps(customDifficulties);
