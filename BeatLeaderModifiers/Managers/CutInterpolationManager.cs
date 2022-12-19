@@ -113,6 +113,10 @@ internal class CutInterpolationManager : IInitializable, IDisposable, ILateTicka
 
     #region Events
 
+    private static float badTiming = 0.05f;
+        private static float timingOffset = 0.0f;
+        private static float goodTiming = 0.035f;
+
     private void OnBeforeNoteWasCutEvent(NoteController noteController, ref NoteCutInfo noteCutInfo) {
         if (!_noteMovementCache.ContainsKey(noteController)) return;
         var previousNoteMovementData = _noteMovementCache[noteController];
@@ -142,6 +146,8 @@ internal class CutInterpolationManager : IInitializable, IDisposable, ILateTicka
         Plugin.Log.Debug("" + noteCutInfo.timeDeviation + " " + newTimeDeviation);
         Plugin.Log.Debug("" + currentNotePosition.x + " " + currentNotePosition.y + " " + currentNotePosition.z + " " + previousNoteMovementData.NotePosition.x + " " + previousNoteMovementData.NotePosition.y + " " + previousNoteMovementData.NotePosition.z);
 
+        float timingRating = Mathf.Clamp01((Mathf.Abs(newTimeDeviation - timingOffset) - goodTiming) / badTiming);
+
         noteCutInfo = new NoteCutInfo(
             noteCutInfo.noteData,
             noteCutInfo.speedOK,
@@ -155,7 +161,7 @@ internal class CutInterpolationManager : IInitializable, IDisposable, ILateTicka
             noteCutInfo.cutDirDeviation,
             noteCutInfo.cutPoint,
             noteCutInfo.cutNormal,
-            noteCutInfo.cutDistanceToCenter,
+            timingRating * 3,
             noteCutInfo.cutAngle,
             noteCutInfo.worldRotation,
             noteCutInfo.inverseWorldRotation,

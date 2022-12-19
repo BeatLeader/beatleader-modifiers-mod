@@ -17,9 +17,9 @@ namespace BeatLeaderModifiers {
         //private static float goodAngle = 7.5f;
         //private static float badAngle = 45f;
 
-        private static float badTiming = 0.04f;
+        private static float badTiming = 0.05f;
         private static float timingOffset = 0.0f;
-        private static float goodTiming = 0.03f;
+        private static float goodTiming = 0.035f;
 
         [UsedImplicitly]
         private static void Prefix(
@@ -47,7 +47,7 @@ namespace BeatLeaderModifiers {
                 
                 ____saberSwingRatingCounter.SetField<SaberSwingRatingCounter, float>("_afterCutRating", timingRating);
                 ____saberSwingRatingCounter.SetField<SaberSwingRatingCounter, float>("_beforeCutRating", timingRating);
-                __instance.SetField<CutScoreBuffer, int>("_centerDistanceCutScore", Mathf.RoundToInt(15f * timingRating));
+
                 Plugin.Log.Debug(timingRating + " ");
             }
         }
