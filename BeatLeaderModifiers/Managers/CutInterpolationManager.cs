@@ -139,6 +139,9 @@ internal class CutInterpolationManager : IInitializable, IDisposable, ILateTicka
         InterpolationUtils.CalculateClosestApproach(previousFrameData, currentFrameData, out var newTime, out var newDistance);
         var newTimeDeviation = noteCutInfo.noteData.time - newTime;
 
+        Plugin.Log.Debug("" + noteCutInfo.timeDeviation + " " + newTimeDeviation);
+        Plugin.Log.Debug("" + currentNotePosition.x + " " + currentNotePosition.y + " " + currentNotePosition.z + " " + previousNoteMovementData.NotePosition.x + " " + previousNoteMovementData.NotePosition.y + " " + previousNoteMovementData.NotePosition.z);
+
         noteCutInfo = new NoteCutInfo(
             noteCutInfo.noteData,
             noteCutInfo.speedOK,

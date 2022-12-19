@@ -10,10 +10,10 @@ internal static class CharacteristicsManager {
     #region Characteritics
 
     public static readonly CharacteristicDescriptor BetterScoringCharacteristic = new(
-        "BeatLeaderModifiers.Resources.TestIcon.png",
-        "BetterScoring",
-        "BL_BS",
-        "useful hint"
+        "BeatLeaderModifiers.Icons.RhythmGame.png",
+        "RhythmGameStandard",
+        "RhythmGameStandard",
+        "It's a rhythm game!"
     );
 
     #endregion
@@ -73,7 +73,7 @@ internal static class CharacteristicsManager {
             HintText = hintText;
             
             //TODO: AssetBundle?
-            Icon = Resources.FindObjectsOfTypeAll<Sprite>().FirstOrDefault(it => it.name == icon);
+            Icon = SongCoreUtilities.LoadSpriteFromResources(icon);
         }
     }
 
