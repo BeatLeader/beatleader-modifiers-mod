@@ -119,8 +119,11 @@
     <Compile Include="Installers\OnGameplayCoreInstaller.cs" />
     <Compile Include="Installers\OnMenuInstaller.cs" />
     <Compile Include="Managers\CharacteristicsManager.cs" />
+    <Compile Include="Managers\CutInterpolationManager.cs" />
     <Compile Include="Plugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\HarmonyUtils.cs" />
+    <Compile Include="Utils\InterpolationUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="manifest.json" />
