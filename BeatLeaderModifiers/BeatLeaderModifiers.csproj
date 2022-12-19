@@ -118,6 +118,7 @@
     <Compile Include="Installers\OnAppInitInstaller.cs" />
     <Compile Include="Installers\OnGameplayCoreInstaller.cs" />
     <Compile Include="Installers\OnMenuInstaller.cs" />
+    <Compile Include="Managers\BeatLeaderInteropManager.cs" />
     <Compile Include="Managers\CharacteristicsManager.cs" />
     <Compile Include="Managers\CutInterpolationManager.cs" />
     <Compile Include="Plugin.cs" />
