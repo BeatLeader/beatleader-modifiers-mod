@@ -113,6 +113,7 @@
   <ItemGroup>
     <Compile Include="HarmonyPatches\CutScoreBufferPatch.cs" />
     <Compile Include="HarmonyPatches\HarmonyHelper.cs" />
+    <Compile Include="HarmonyPatches\NoteControllerPatch.cs" />
     <Compile Include="HarmonyPatches\SetContentPatch.cs" />
     <Compile Include="HarmonyPatches\StandardLevelBlaBlaPatch.cs" />
     <Compile Include="Installers\OnAppInitInstaller.cs" />
