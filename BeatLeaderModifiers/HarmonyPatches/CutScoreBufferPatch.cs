@@ -18,7 +18,7 @@ namespace BeatLeaderModifiers {
         //private static float badAngle = 45f;
 
         private static float badTiming = 0.04f;
-        private static float goodTiming = 0.045f;
+        private static float goodTiming = 0.035f;
 
         [UsedImplicitly]
         private static void Prefix(

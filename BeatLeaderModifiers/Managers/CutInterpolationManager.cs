@@ -114,7 +114,7 @@ internal class CutInterpolationManager : IInitializable, IDisposable, ILateTicka
     #region Events
 
     private static float badTiming = 0.04f;
-    private static float goodTiming = 0.045f;
+    private static float goodTiming = 0.035f;
 
     private void OnBeforeNoteWasCutEvent(NoteController noteController, ref NoteCutInfo noteCutInfo) {
         if (!_noteMovementCache.ContainsKey(noteController)) return;
@@ -160,8 +160,8 @@ internal class CutInterpolationManager : IInitializable, IDisposable, ILateTicka
             noteCutInfo.cutDirDeviation,
             noteCutInfo.cutPoint,
             noteCutInfo.cutNormal,
-            timingRating * 3,
             noteCutInfo.cutAngle,
+            timingRating / 3.0f,
             noteCutInfo.worldRotation,
             noteCutInfo.inverseWorldRotation,
             noteCutInfo.noteRotation,
