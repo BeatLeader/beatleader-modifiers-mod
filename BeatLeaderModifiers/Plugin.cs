@@ -27,6 +27,8 @@ namespace BeatLeaderModifiers {
         [OnStart, UsedImplicitly]
         public void OnApplicationStart() {
             HarmonyHelper.ApplyPatches();
+            BeatLeaderInteropManager.ApplyPatches();
+            SongCoreInteropManager.ApplyPatches();
             CharacteristicsManager.RegisterCharacteristics();
         }
 

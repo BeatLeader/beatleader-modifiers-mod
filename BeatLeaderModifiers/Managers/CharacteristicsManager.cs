@@ -10,10 +10,10 @@ internal static class CharacteristicsManager {
     #region Characteritics
 
     public static readonly CharacteristicDescriptor BetterScoringCharacteristic = new(
-        "BeatLeaderModifiers.Resources.TestIcon.png",
-        "BetterScoring",
-        "BL_BS",
-        "useful hint"
+        "BeatLeaderModifiers.Icons.RhythmGame.png",
+        "RhythmGameStandard",
+        "RhythmGameStandard",
+        "It's a rhythm game!"
     );
 
     #endregion
@@ -25,35 +25,13 @@ internal static class CharacteristicsManager {
     }
 
     private static void RegisterCustomCharacteristic(CharacteristicDescriptor characteristicDescriptor) {
-        Collections.RegisterCustomCharacteristic(
+        characteristicDescriptor.CharacteristicSO = Collections.RegisterCustomCharacteristic(
             characteristicDescriptor.Icon,
             characteristicDescriptor.Name,
             characteristicDescriptor.HintText,
             characteristicDescriptor.SerializedName,
             characteristicDescriptor.Name
         );
-
-        characteristicDescriptor.CharacteristicSO = CreateCharacteristicSO(characteristicDescriptor);
-    }
-
-    #endregion
-
-    #region CreateCharacteristicSO
-
-    private static BeatmapCharacteristicSO CreateCharacteristicSO(CharacteristicDescriptor characteristicDescriptor) {
-        var beatmapCharacteristicSO = ScriptableObject.CreateInstance<BeatmapCharacteristicSO>();
-
-        beatmapCharacteristicSO.SetField("_icon", characteristicDescriptor.Icon);
-        beatmapCharacteristicSO.SetField("_characteristicNameLocalizationKey", characteristicDescriptor.Name);
-        beatmapCharacteristicSO.SetField("_descriptionLocalizationKey", characteristicDescriptor.HintText);
-        beatmapCharacteristicSO.SetField("_serializedName", characteristicDescriptor.SerializedName);
-        beatmapCharacteristicSO.SetField("_compoundIdPartName", characteristicDescriptor.Name);
-        beatmapCharacteristicSO.SetField("_sortingOrder", 100);
-        beatmapCharacteristicSO.SetField("_containsRotationEvents", false);
-        beatmapCharacteristicSO.SetField("_requires360Movement", false);
-        beatmapCharacteristicSO.SetField("_numberOfColors", 2);
-
-        return beatmapCharacteristicSO;
     }
 
     #endregion
@@ -73,7 +51,7 @@ internal static class CharacteristicsManager {
             HintText = hintText;
             
             //TODO: AssetBundle?
-            Icon = Resources.FindObjectsOfTypeAll<Sprite>().FirstOrDefault(it => it.name == icon);
+            Icon = SongCoreUtilities.LoadSpriteFromResources(icon);
         }
     }
 
