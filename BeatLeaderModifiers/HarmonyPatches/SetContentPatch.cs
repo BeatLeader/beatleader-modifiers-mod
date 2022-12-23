@@ -12,7 +12,7 @@ namespace BeatLeaderModifiers {
 
         [UsedImplicitly]
         private static void Prefix(IBeatmapLevel level) {
-            if (!level.levelID.StartsWith("custom_level")) return;
+            if (!level.levelID.StartsWith("custom_level") || !(level.beatmapLevelData is BeatmapLevelData)) return;
 
             if (level.beatmapLevelData.difficultyBeatmapSets.Any(x =>
                     x.beatmapCharacteristic.serializedName.Equals(CharacteristicsManager.BetterScoringCharacteristic.SerializedName))) {
